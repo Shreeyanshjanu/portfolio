@@ -1,0 +1,26 @@
+{
+  "@@locale": "en",
+  "settings": "Settings",
+  "selectAppLanguage": "Select app language",
+  "projects": "Projects",
+  "aboutMe": "About me",
+  "gallery": "Gallery",
+  "easterEgg": "Easter egg",
+  "language": "Language",
+  "aboutSystem": "About system",
+  "darkLightMode": "Dark/Light mode",
+  "fontSize": "Font size",
+  "aboutDevice": "About device",
+  "contact": "Contact",
+  "skills": "Skills",
+  "programmingLanguages": "Programming Languages",
+  "frameworks": "Frameworks & Libraries",
+  "tools": "Tools & Technologies",
+  "databases": "Databases",
+  "softSkills": "Soft Skills",
+  "proficiency": "Proficiency",
+  "bloomBoom": "Bloom Boom",
+"bloomBoomDescription": "Flower Delivery Mobile Application",
+"chrome":"chrome"
+
+}
