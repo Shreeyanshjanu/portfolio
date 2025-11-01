@@ -36,7 +36,7 @@ class _BloomBoomState extends State<BloomBoom> {
         _controller.play();
         _controller.setLooping(true);
       }).catchError((error) {
-        print('Error initializing video: $error');
+        debugPrint('Error initializing video: $error');
       });
   }
 

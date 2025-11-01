@@ -46,7 +46,7 @@ class _ChromePageState extends State<ChromePage> {
             });
           },
           onWebResourceError: (error) {
-            print('WebView Error: ${error.description}');
+            debugPrint('WebView Error: ${error.description}');
           },
         ),
       )
