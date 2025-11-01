@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../widgets/tablet_frame.dart';
 import '../widgets/tablet_screen.dart';
-import '../widgets/bottom_buttons_bar.dart'; // ← Add this import
+import '../widgets/bottom_buttons_bar.dart';
 
 class AboutMePage extends StatefulWidget {
   const AboutMePage({Key? key}) : super(key: key);
@@ -51,7 +51,7 @@ class _AboutMePageState extends State<AboutMePage>
       body: Center(
         child: TabletFrame(
           child: TabletScreen(
-            child: Column( // ← Wrap in Column
+            child: Column(
               children: [
                 // Content Area
                 Expanded(
@@ -143,9 +143,9 @@ class _AboutMePageState extends State<AboutMePage>
                                               },
                                             ),
                                           ),
-                                          const SizedBox(width: 20),
-                                          // Name and title
-                                          Expanded(
+                                          const SizedBox(width: 15),
+                                          // Name and title - Fixed with Flexible
+                                          Flexible(
                                             child: Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
@@ -155,19 +155,24 @@ class _AboutMePageState extends State<AboutMePage>
                                                 const Text(
                                                   'Shreeyansh Janu',
                                                   style: TextStyle(
-                                                    fontSize: 26,
+                                                    fontSize: 22,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black87,
                                                   ),
+                                                  maxLines: 2,
+                                                  overflow: TextOverflow.ellipsis,
                                                 ),
-                                                const SizedBox(height: 8),
+                                                const SizedBox(height: 6),
                                                 Text(
-                                                  'Flutter Developer | ML Enthusiast',
+                                                  'Flutter Developer |\nML Enthusiast',
                                                   style: TextStyle(
-                                                    fontSize: 16,
+                                                    fontSize: 13,
                                                     fontWeight: FontWeight.w400,
                                                     color: Colors.grey[600],
+                                                    height: 1.3,
                                                   ),
+                                                  maxLines: 2,
+                                                  overflow: TextOverflow.ellipsis,
                                                 ),
                                               ],
                                             ),
@@ -270,7 +275,7 @@ class _AboutMePageState extends State<AboutMePage>
                 ),
                 
                 // Bottom Buttons Bar
-                const BottomButtonsBar(), // ← Added here
+                const BottomButtonsBar(),
               ],
             ),
           ),
