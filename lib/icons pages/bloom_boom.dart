@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/widgets/tablet_frame.dart';
 import 'package:portfolio/widgets/tablet_screen.dart';
 import 'package:video_player/video_player.dart';
 import 'package:portfolio/widgets/bottom_buttons_bar.dart';
-
-// Only import cloudinary_flutter on mobile platforms
-import 'package:cloudinary_flutter/cloudinary_object.dart';
-import 'package:cloudinary_flutter/video/cld_video_controller.dart';
 
 class BloomBoom extends StatefulWidget {
   const BloomBoom({super.key});
@@ -18,13 +13,11 @@ class BloomBoom extends StatefulWidget {
 }
 
 class _BloomBoomState extends State<BloomBoom> {
-  CldVideoController? _mobileController;
-  VideoPlayerController? _webController;
+  late VideoPlayerController _controller;
   bool _isInitialized = false;
 
-  // Your Cloudinary credentials
-  final String cloudName = 'dyr7jlczr';
-  final String publicId = 'vidma_recorder_21102025_132251_1_nsyd8v';
+  // Hardcoded Cloudinary video URL
+  final String videoUrl = 'https://res.cloudinary.com/dyr7jlczr/video/upload/vidma_recorder_21102025_132251_1_nsyd8v.mp4';
 
   @override
   void initState() {
@@ -33,101 +26,24 @@ class _BloomBoomState extends State<BloomBoom> {
   }
 
   void _initializePlayer() {
-    if (kIsWeb) {
-      // For Web: Use direct Cloudinary video URL with standard video_player
-      _webController = VideoPlayerController.networkUrl(
-        Uri.parse(
-          'https://res.cloudinary.com/$cloudName/video/upload/$publicId.mp4',
-        ),
-      )..initialize().then((_) {
-          setState(() {
-            _isInitialized = true;
-          });
-          _webController!.play();
-          _webController!.setLooping(true);
-        }).catchError((error) {
-          print('Error initializing web video: $error');
+    // Use standard video_player for ALL platforms (web, Android, iOS)
+    _controller = VideoPlayerController.networkUrl(
+      Uri.parse(videoUrl),
+    )..initialize().then((_) {
+        setState(() {
+          _isInitialized = true;
         });
-    } else {
-      // For Mobile: Use cloudinary_flutter
-      final cloudinary = CloudinaryObject.fromCloudName(
-        cloudName: cloudName,
-      );
-
-      _mobileController = CldVideoController(
-        cloudinary: cloudinary,
-        publicId: publicId,
-      )..initialize().then((_) {
-          setState(() {
-            _isInitialized = true;
-          });
-          _mobileController!.play();
-          _mobileController!.setLooping(true);
-        }).catchError((error) {
-          print('Error initializing mobile video: $error');
-        });
-    }
+        _controller.play();
+        _controller.setLooping(true);
+      }).catchError((error) {
+        print('Error initializing video: $error');
+      });
   }
 
   @override
   void dispose() {
-    _mobileController?.dispose();
-    _webController?.dispose();
+    _controller.dispose();
     super.dispose();
-  }
-
-  Widget _buildVideoPlayer() {
-    if (!_isInitialized) {
-      return Container(
-        height: 400,
-        color: Colors.black,
-        child: Center(
-          child: CircularProgressIndicator(
-            color: Colors.white,
-          ),
-        ),
-      );
-    }
-
-    if (kIsWeb) {
-      // Web video player
-      return AspectRatio(
-        aspectRatio: _webController!.value.aspectRatio,
-        child: VideoPlayer(_webController!),
-      );
-    } else {
-      // Mobile video player
-      return AspectRatio(
-        aspectRatio: _mobileController!.value.aspectRatio,
-        child: VideoPlayer(_mobileController!),
-      );
-    }
-  }
-
-  bool _isPlaying() {
-    if (kIsWeb) {
-      return _webController?.value.isPlaying ?? false;
-    } else {
-      return _mobileController?.value.isPlaying ?? false;
-    }
-  }
-
-  void _togglePlayPause() {
-    setState(() {
-      if (kIsWeb) {
-        if (_webController!.value.isPlaying) {
-          _webController!.pause();
-        } else {
-          _webController!.play();
-        }
-      } else {
-        if (_mobileController!.value.isPlaying) {
-          _mobileController!.pause();
-        } else {
-          _mobileController!.play();
-        }
-      }
-    });
   }
 
   @override
@@ -205,7 +121,20 @@ class _BloomBoomState extends State<BloomBoom> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(16),
                               child: ClipRect(
-                                child: _buildVideoPlayer(),
+                                child: _isInitialized
+                                    ? AspectRatio(
+                                        aspectRatio: _controller.value.aspectRatio,
+                                        child: VideoPlayer(_controller),
+                                      )
+                                    : Container(
+                                        height: 400,
+                                        color: Colors.black,
+                                        child: Center(
+                                          child: CircularProgressIndicator(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
                               ),
                             ),
                           ),
@@ -215,12 +144,20 @@ class _BloomBoomState extends State<BloomBoom> {
                           // Play/Pause Button
                           ElevatedButton.icon(
                             icon: Icon(
-                              _isPlaying() ? Icons.pause : Icons.play_arrow,
+                              _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
                             ),
                             label: Text(
-                              _isPlaying() ? 'Pause' : 'Play',
+                              _controller.value.isPlaying ? 'Pause' : 'Play',
                             ),
-                            onPressed: _togglePlayPause,
+                            onPressed: () {
+                              setState(() {
+                                if (_controller.value.isPlaying) {
+                                  _controller.pause();
+                                } else {
+                                  _controller.play();
+                                }
+                              });
+                            },
                           ),
 
                           const SizedBox(height: 30),
