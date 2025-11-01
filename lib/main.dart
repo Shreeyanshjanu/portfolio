@@ -5,30 +5,19 @@ import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/utils/app_settings_manager.dart';
 import 'package:portfolio/utils/recent_apps_manager.dart';
 import 'package:provider/provider.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
-
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   
-  await SentryFlutter.init(
-    (options) {
-      options.dsn = 'https://d8720b0c9385773897444ca499b35486@o4510249342074880.ingest.us.sentry.io/4510249343582208';
-      options.tracesSampleRate = 1.0;
-      options.profilesSampleRate = 1.0;
-    },
-    
-    appRunner: () => runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => AppSettingsManager()),
-          ChangeNotifierProvider(create: (_) => RecentAppsManager()),
-        ],
-        child: const PortfolioAppWrapper(),
-      ),
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppSettingsManager()),
+        ChangeNotifierProvider(create: (_) => RecentAppsManager()),
+      ],
+      child: const PortfolioAppWrapper(),
     ),
   );
-  await Sentry.captureException(Exception('This is a sample exception.'));
 }
 
 class PortfolioAppWrapper extends StatelessWidget {

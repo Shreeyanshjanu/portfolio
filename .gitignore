@@ -45,5 +45,14 @@ app.*.map.json
 /android/app/release
 
 sentry.properties
+# Sentry files
+sentry-wizard.exe
+*.exe
+sentry.properties
+
+# Video files
+*.mp4
+*.mov
+assets/mp_4/
 
 
