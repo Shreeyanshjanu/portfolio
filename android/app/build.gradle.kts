@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.portfolio"
-        minSdk = 23  // Updated from flutter.minSdkVersion
+        minSdk = flutter.minSdkVersion  // Updated from flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
