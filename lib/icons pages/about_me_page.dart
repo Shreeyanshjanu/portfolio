@@ -59,10 +59,10 @@ class _AboutMePageState extends State<AboutMePage>
                     width: double.infinity,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
+
                         colors: [Color(0xFFB94CD5), Color(0xFF9B4CB8)],
-                      ),
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter, ),
                     ),
                     child: Column(
                       children: [
@@ -82,8 +82,10 @@ class _AboutMePageState extends State<AboutMePage>
                           child: Row(
                             children: [
                               IconButton(
-                                icon: const Icon(Icons.arrow_back,
-                                    color: Colors.white),
+                                icon: const Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.white,
+                                ),
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
@@ -102,107 +104,110 @@ class _AboutMePageState extends State<AboutMePage>
 
                         // Profile Content
                         Expanded(
-                          child: Center(
-                            child: SingleChildScrollView(
-                              padding: const EdgeInsets.all(20),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  // Main profile card
-                                  Card(
-                                    elevation: 40.0,
-                                    color: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5.0),
-                                    ),
-                                    child: Container(
-                                      width: 340,
-                                      height: 160,
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Row(
-                                        children: [
-                                          // Profile Photo
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            child: Image.asset(
-                                              'assets/images/developer_profile.jpg',
-                                              width: 140,
-                                              height: 140,
-                                              fit: BoxFit.cover,
-                                              errorBuilder: (context, error,
-                                                  stackTrace) {
-                                                return Container(
-                                                  width: 140,
-                                                  height: 140,
-                                                  color: Colors.grey.shade300,
-                                                  child: const Icon(
-                                                      Icons.person,
-                                                      size: 60),
-                                                );
-                                              },
-                                            ),
+                          child: SingleChildScrollView(
+                            padding: const EdgeInsets.all(20),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                // Main profile card
+                                Card(
+                                  elevation: 40.0,
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        // Profile Photo
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            15,
                                           ),
-                                          const SizedBox(width: 15),
-                                          // Name and title - Fixed with Flexible
-                                          Flexible(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                const Text(
-                                                  'Shreeyansh Janu',
-                                                  style: TextStyle(
-                                                    fontSize: 22,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black87,
-                                                  ),
-                                                  maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
+                                          child: Image.asset(
+                                            'assets/images/developer_profile.jpg',
+                                            width: 140,
+                                            height: 140,
+                                            fit: BoxFit.cover,
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return Container(
+                                                width: 140,
+                                                height: 140,
+                                                color: Colors.grey.shade300,
+                                                child: const Icon(
+                                                  Icons.person,
+                                                  size: 60,
                                                 ),
-                                                const SizedBox(height: 6),
-                                                Text(
-                                                  'Flutter Developer |\nML Enthusiast',
-                                                  style: TextStyle(
-                                                    fontSize: 13,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.grey[600],
-                                                    height: 1.3,
-                                                  ),
-                                                  maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              ],
-                                            ),
+                                              );
+                                            },
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                        const SizedBox(width: 15),
+                                        // Name and title - Fixed with Flexible
+                                        Flexible(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: [
+                                              const Text(
+                                                'Shreeyansh Janu',
+                                                style: TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black87,
+                                                ),
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              const SizedBox(height: 6),
+                                              Text(
+                                                'Flutter Developer |\nML Enthusiast',
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.grey[600],
+                                                  height: 1.3,
+                                                ),
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
+                                ),
 
-                                  const SizedBox(height: 10),
+                                const SizedBox(height: 10),
 
-                                  // Two cards below
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      // Left card - Social Links
-                                      Card(
+                                // Two cards below
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // Left card - Social Links
+                                    Expanded(
+                                      child: Card(
                                         elevation: 8.0,
                                         color: Colors.white,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
+                                          borderRadius: BorderRadius.circular(
+                                            8.0,
+                                          ),
                                         ),
                                         child: Container(
-                                          width: 165,
                                           height: 300,
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(16.0),
                                           child: Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
+                                            MainAxisAlignment.spaceEvenly,
                                             children: [
                                               _buildSocialRow(
                                                 'assets/animations/github.json',
@@ -233,21 +238,23 @@ class _AboutMePageState extends State<AboutMePage>
                                           ),
                                         ),
                                       ),
+                                    ),
 
-                                      const SizedBox(width: 10),
+                                    const SizedBox(width: 10),
 
-                                      // Right card - Bio
-                                      Card(
+                                    // Right card - Bio
+                                    Expanded(
+                                      child: Card(
                                         elevation: 8.0,
                                         color: Colors.white,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
+                                          borderRadius: BorderRadius.circular(
+                                            8.0,
+                                          ),
                                         ),
                                         child: Container(
-                                          width: 165,
                                           height: 300,
-                                          padding: const EdgeInsets.all(15.0),
+                                          padding: const EdgeInsets.all(16.0),
                                           child: SingleChildScrollView(
                                             child: Text(
                                               _displayedText,
@@ -262,10 +269,10 @@ class _AboutMePageState extends State<AboutMePage>
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -273,7 +280,7 @@ class _AboutMePageState extends State<AboutMePage>
                     ),
                   ),
                 ),
-                
+
                 // Bottom Buttons Bar
                 const BottomButtonsBar(),
               ],
@@ -316,10 +323,7 @@ class _AboutMePageState extends State<AboutMePage>
               ),
               Text(
                 username,
-                style: TextStyle(
-                  fontSize: 11,
-                  color: Colors.grey[600],
-                ),
+                style: TextStyle(fontSize: 11, color: Colors.grey[600]),
                 overflow: TextOverflow.ellipsis,
               ),
             ],
