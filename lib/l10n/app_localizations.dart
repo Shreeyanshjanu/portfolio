@@ -229,6 +229,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'chrome'**
   String get chrome;
+
+  /// No description provided for @wallpaperComposer.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallpaper Composer'**
+  String get wallpaperComposer;
 }
 
 class _AppLocalizationsDelegate

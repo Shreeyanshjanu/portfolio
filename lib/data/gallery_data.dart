@@ -60,4 +60,34 @@ final List<ProjectGallery> projectGalleries = [
       'YouTube Link Integration',
     ],
   ),
+  ProjectGallery(
+    name: 'Wallpaper Composer',
+    shortDescription:
+        'Dynamic video wallpaper creator with multi-media support',
+    fullDescription:
+        'A full-stack web application for creating dynamic video wallpapers by composing multiple videos and images. Built with Flutter Web frontend and FastAPI backend, featuring FFmpeg-powered video processing, drag-and-drop interface, real-time preview, and Supabase authentication. Supports unlimited media files with multiple formats (MP4, MOV, AVI, MKV, WEBM, JPG, PNG, GIF). Implements microservices architecture with RESTful API, blob URL-based temporary storage, and automated CI/CD deployment on Netlify and Render.',
+    coverImage:
+        'assets/projects images/wallpaper_composer/login.png', // Add later
+    screenshots: [
+      'assets/projects images/wallpaper_composer/login.png',
+      'assets/projects images/wallpaper_composer/home.png',
+      'assets/projects images/wallpaper_composer/blank_canvas.png',
+      'assets/projects images/wallpaper_composer/image1_canvas.png',
+      'assets/projects images/wallpaper_composer/image2_canvas.png',
+      'assets/projects images/wallpaper_composer/image3_canvas.png',
+    ], // Add actual screenshots later
+    techStack:
+        'Flutter Web • FastAPI • FFmpeg • Python • Supabase • Netlify • Render',
+    duration: 'November 2024 - November 2025',
+    feautures: [
+      'Unlimited Media Upload',
+      'Multi-Format Support (Video & Image)',
+      'Drag-and-Drop Interface',
+      'Real-time Video Preview',
+      'FFmpeg Video Composition',
+      'Supabase Authentication',
+      'Interactive Resize Controls',
+      'Automated CI/CD Deployment',
+    ],
+  ),
 ];
