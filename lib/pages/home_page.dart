@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/icons%20pages/bloom_boom.dart';
 import 'package:portfolio/icons%20pages/chrome_page.dart';
+import 'package:portfolio/icons%20pages/wallpaper_composer.dart';
 import 'package:provider/provider.dart';
 import 'package:portfolio/icons%20pages/about_me_page.dart';
 import 'package:portfolio/icons%20pages/contact_page.dart';
@@ -15,14 +16,11 @@ import '../widgets/tablet_frame.dart';
 import '../widgets/tablet_screen.dart';
 import '../widgets/google_search_widget.dart';
 import '../widgets/bottom_buttons_bar.dart';
-
 class HomePage extends StatelessWidget {
-  const HomePage({super.key}); 
-
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
-
     return Scaffold(
       body: Center(
         child: TabletFrame(
@@ -223,6 +221,30 @@ class HomePage extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => const ChromePage(),
+                                    ),
+                                  );
+                                },
+                              ),
+                              AppIcon(
+                                iconPath: 'assets/icons/wallpaper_composer.png',
+                                label: 'Wallpaper\nComposer',
+                                onTap: () {
+                                  Provider.of<RecentAppsManager>(
+                                    context,
+                                    listen: false,
+                                  ).addRecentApp(
+                                    RecentApp(
+                                      name: 'Wallpaper Composer',
+                                      iconPath:
+                                          'assets/icons/wallpaper_composer.png',
+                                      page: const WallpaperComposer(),
+                                    ),
+                                  );
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const WallpaperComposer(),
                                     ),
                                   );
                                 },

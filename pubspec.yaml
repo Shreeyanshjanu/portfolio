@@ -34,7 +34,6 @@ dependencies:
   cloudinary_url_gen: ^1.8.0
   # REMOVED: cloudinary_flutter (not web compatible)
   # REMOVED: cloudinary_api (not needed)
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -88,3 +87,11 @@ flutter:
     - assets/projects images/ylfmpo/link_paste.png
     - assets/projects images/ylfmpo/login.png
     - assets/projects images/ylfmpo/settings.png
+    - assets/icons/wallpaper_composer.png
+    - assets/projects images/wallpaper_composer/blank_canvas.png
+    - assets/projects images/wallpaper_composer/home.png
+    - assets/projects images/wallpaper_composer/image1_canvas.png
+    - assets/projects images/wallpaper_composer/image2_canvas.png
+    - assets/projects images/wallpaper_composer/image3_canvas.png
+    - assets/projects images/wallpaper_composer/login.png
+

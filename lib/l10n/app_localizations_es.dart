@@ -73,4 +73,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get chrome => 'Chromo';
+
+  @override
+  String get wallpaperComposer => 'Compositor de Fondos';
 }

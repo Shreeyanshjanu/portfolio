@@ -73,4 +73,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chrome => 'chrome';
+
+  @override
+  String get wallpaperComposer => 'Wallpaper Composer';
 }
