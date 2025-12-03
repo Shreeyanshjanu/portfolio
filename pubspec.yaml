@@ -32,8 +32,6 @@ dependencies:
   webview_flutter_web: ^0.2.3+4
   flutter_inappwebview: ^6.1.5
   cloudinary_url_gen: ^1.8.0
-  # REMOVED: cloudinary_flutter (not web compatible)
-  # REMOVED: cloudinary_api (not needed)
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -94,4 +92,6 @@ flutter:
     - assets/projects images/wallpaper_composer/image2_canvas.png
     - assets/projects images/wallpaper_composer/image3_canvas.png
     - assets/projects images/wallpaper_composer/login.png
+    - assets/icons/leetcode.png
+    - assets/images/profile_card.png
 

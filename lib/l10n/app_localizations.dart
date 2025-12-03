@@ -235,6 +235,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Wallpaper Composer'**
   String get wallpaperComposer;
+
+  /// No description provided for @leetcode.
+  ///
+  /// In en, this message translates to:
+  /// **'LeetCode'**
+  String get leetcode;
 }
 
 class _AppLocalizationsDelegate

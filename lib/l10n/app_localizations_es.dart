@@ -76,4 +76,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get wallpaperComposer => 'Compositor de Fondos';
+
+  @override
+  String get leetcode => 'LeetCode';
 }
