@@ -37,3 +37,8 @@ sentry.properties
 assets/mp_4/
 
 
+build/
+.dart_tool/
+.idea/
+.flutter-plugins
+.flutter-plugins-dependencies
